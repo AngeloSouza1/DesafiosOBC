@@ -88,7 +88,7 @@ def processar_entrada():
         else:
             messagebox.showerror("Resultado", "O tesouro não pode ser alcançado.")
 
-        # Mostrar a ilha graficamente com os passos (sem threading)
+        # Mostrar a ilha graficamente com os passos
         mostrar_ilha_graficamente(ilha, caminho, resultado)
 
     except Exception as e:
@@ -100,22 +100,27 @@ def limpar_entrada():
 
 # Configuração da interface Tkinter
 root = tk.Tk()
-root.title("Entrada de Ilha para Busca de Tesouro")
+root.title("Busca de Tesouro na Ilha")
+root.geometry("600x500")
+root.configure(bg="#f0f0f0")
+
+# Frame principal
+frame = tk.Frame(root, bg="#f0f0f0", padx=20, pady=20)
+frame.pack(pady=20)
 
 # Rótulo
-label = tk.Label(root, text="Insira a matriz da ilha (exemplo: P~~XX):")
+label = tk.Label(frame, text="Insira a matriz da ilha (exemplo: P~~XX):", font=("Helvetica", 14), bg="#f0f0f0")
 label.pack(pady=10)
 
 # Área de texto para inserir a matriz
-text_area = tk.Text(root, height=15, width=50)
+text_area = tk.Text(frame, height=15, width=50, font=("Courier", 12), bg="#ffffff", fg="#000000", relief=tk.GROOVE, bd=2)
 text_area.pack(pady=10)
 
-# Botão para processar a entrada
-button_gerar = tk.Button(root, text="Gerar Gráfico", command=processar_entrada)
+# Botões
+button_gerar = tk.Button(frame, text="Gerar Gráfico", command=processar_entrada, bg="#4caf50", fg="white", font=("Helvetica", 12), padx=10, pady=5, relief=tk.RAISED)
 button_gerar.pack(pady=5)
 
-# Botão para limpar a entrada
-button_limpar = tk.Button(root, text="Limpar", command=limpar_entrada)
+button_limpar = tk.Button(frame, text="Limpar", command=limpar_entrada, bg="#f44336", fg="white", font=("Helvetica", 12), padx=10, pady=5, relief=tk.RAISED)
 button_limpar.pack(pady=5)
 
 # Iniciar a interface Tkinter
