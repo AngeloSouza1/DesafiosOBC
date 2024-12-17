@@ -24,12 +24,7 @@ viloes = [
 
 # Função para gerar uma missão aleatória
 def gerar_missao():
-    """
-    Gera uma missão aleatória com um objetivo, um local e um vilão.
-
-    Retorna:
-        dict: Um dicionário contendo a missão com objetivo, local e vilão.
-    """
+ 
     objetivo = random.choice(objetivos)
     local = random.choice(locais)
     vilao = random.choice(viloes)
