@@ -1,16 +1,7 @@
 # encontrar_tesouro.py
 
 def encontrar_caminho_ate_tesouro(mapa):
-    """
-    Encontra o caminho mais curto até o tesouro em um mapa de coordenadas.
-
-    Parâmetros:
-    - mapa (list): Lista de tuplas representando as coordenadas (x, y).
-
-    Retorna:
-    - list: Lista de tuplas com o caminho até o tesouro.
-    """
-    # Lista para armazenar o caminho percorrido
+ 
     caminho = []
 
     # Ponto de partida é a primeira coordenada
