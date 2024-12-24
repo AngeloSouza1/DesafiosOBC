@@ -1,0 +1,160 @@
+/* Estilos básicos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #000; /* Fundo preto */
+    color: #fff; /* Texto branco */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  header {
+    background-color: #1a1a1a; /* Preto mais claro */
+    color: #fff; /* Branco para o texto do título */
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+  
+  main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .converter {
+    background: #1a1a1a; /* Fundo da seção principal */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1); /* Sombra branca suave */
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+  }
+  
+  textarea {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    border: 1px solid #444; /* Bordas escuras */
+    border-radius: 5px;
+    resize: none;
+    margin-bottom: 15px;
+    background-color: #333; /* Fundo do campo de texto */
+    color: #fff; /* Texto branco */
+  }
+  
+  button {
+    padding: 12px 25px;
+    font-size: 16px;
+    background-color: #ff4444; /* Vermelho vibrante */
+    color: #fff; /* Texto branco no botão */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #cc0000; /* Vermelho mais escuro no hover */
+  }
+  
+  .output {
+    margin-top: 20px;
+    text-align: left;
+  }
+  
+  .output h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff; /* Branco para o texto do label */
+    margin-bottom: 10px;
+  }
+  
+  .output p {
+    background: #333; /* Fundo do resultado */
+    padding: 15px;
+    border-radius: 5px;
+    font-family: "Courier New", Courier, monospace;
+    word-wrap: break-word;
+    font-size: 18px;
+    color: #00FF7F; /* Verde limão para destacar o Morse */
+  }
+  
+  footer {
+    background-color: #1a1a1a; /* Fundo do rodapé */
+    color: #888; /* Texto cinza claro */
+    text-align: center;
+    padding: 10px 0;
+  }
+  
+  footer a {
+    color: #ff4444; /* Vermelho vibrante para links */
+    text-decoration: none;
+  }
+  
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Espaçamento entre os botões */
+  }
+  
+  button {
+    padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  #convertButton {
+    background-color: #ff4444; /* Vermelho vibrante */
+    color: #fff;
+  }
+  
+  #convertButton:hover {
+    background-color: #cc0000; /* Vermelho mais escuro no hover */
+  }
+  
+  #resetButton {
+    background-color: #555; /* Cinza escuro para o botão de reiniciar */
+    color: #fff;
+  }
+  
+  #resetButton:hover {
+    background-color: #333; /* Cinza ainda mais escuro no hover */
+  }
+
+  #resetButton {
+    display: none; /* Esconde o botão inicialmente */
+    background-color: #555; /* Cor de fundo */
+    color: #fff; /* Cor do texto */
+    padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  #resetButton:hover {
+    background-color: #333; /* Cor no hover */
+  }
+    
