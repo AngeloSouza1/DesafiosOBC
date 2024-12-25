@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tradutor de Robôs</title>
+    <style>
+        /* Configuração do body com a imagem de fundo */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('background.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #ffffff;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Título */
+        h1 {
+            color: #ff6584;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Container para inputs e botão */
+        .container {
+            background: rgba(20, 20, 50, 0.85);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(255, 101, 132, 0.5), 0 0 15px rgba(75, 155, 255, 0.5);
+            width: 90%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Estilos do textarea */
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            border: 2px solid #4b9bff;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: rgba(30, 30, 60, 0.9);
+            color: #ffffff;
+            resize: none;
+            box-shadow: 0 0 10px rgba(75, 155, 255, 0.5);
+        }
+
+        /* Botões */
+        button {
+            width: 100%;
+            background-color: #ff6584;
+            color: #ffffff;
+            border: none;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(255, 101, 132, 0.5);
+        }
+
+        button:hover {
+            background-color: #e94e77;
+            box-shadow: 0 0 15px rgba(255, 101, 132, 0.7);
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        /* Área de saída */
+        .output {
+            width: 100%;
+            padding: 10px;
+            background-color: rgba(30, 30, 60, 0.9);
+            border: 2px solid #4b9bff;
+            border-radius: 5px;
+            text-align: left;
+            color: #e0e0e0;
+            line-height: 1.5;
+            box-shadow: 0 0 10px rgba(75, 155, 255, 0.5);
+        }
+
+        /* Estilo do popup */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(20, 20, 50, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 101, 132, 0.5);
+            color: #ffffff;
+            text-align: center;
+            font-size: 18px;
+            z-index: 1000;
+        }
+
+        .popup button {
+            margin-top: 10px;
+            background-color: #ff6584;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .popup button:hover {
+            background-color: #e94e77;
+        }
+    </style>
+</head>
+<body>
+    <h1>🤖 Tradutor de Robôs Espaciais 🚀</h1>
+    <div class="container">
+        <textarea id="entrada" placeholder="Digite sua sequência de beep e boop aqui..."></textarea>
+        <div class="button-container">
+            <button id="traduzir-btn" onclick="traduzir()">Traduzir</button>
+            <button id="reiniciar-btn" style="display: none;" onclick="reiniciar()">Reiniciar</button>
+        </div>
+        <div class="output" id="resultado"></div>
+    </div>
+
+    <script>
+        function traduzirMensagem(codigo) {
+            const sequencias = codigo.trim().split(' ');
+            let mensagem = '';
+
+            sequencias.forEach(seq => {
+                const repeticoes = (seq.match(/beepboop/g) || []).length;
+                if (repeticoes > 0) {
+                    const letra = String.fromCharCode(96 + repeticoes);
+                    mensagem += letra;
+                }
+            });
+
+            return mensagem;
+        }
+
+        function traduzir() {
+            const entrada = document.getElementById("entrada").value.trim();
+
+            // Verifica se o campo está vazio
+            if (!entrada) {
+                exibirPopup("Por favor, insira uma sequência antes de traduzir!");
+                return;
+            }
+
+            const resultado = traduzirMensagem(entrada);
+
+            // Mostra o resultado
+            document.getElementById("resultado").innerHTML = `
+                <h2>Resultado:</h2>
+                <p>${resultado}</p>
+            `;
+
+            // Esconde o botão Traduzir e exibe o botão Reiniciar
+            document.getElementById("traduzir-btn").style.display = "none";
+            document.getElementById("reiniciar-btn").style.display = "block";
+        }
+
+        function reiniciar() {
+            // Limpa o textarea e o resultado
+            document.getElementById("entrada").value = '';
+            document.getElementById("resultado").innerHTML = '';
+
+            // Mostra o botão Traduzir e esconde o botão Reiniciar
+            document.getElementById("traduzir-btn").style.display = "block";
+            document.getElementById("reiniciar-btn").style.display = "none";
+        }
+
+        function exibirPopup(mensagem) {
+            const popup = document.createElement('div');
+            popup.classList.add('popup');
+            popup.innerHTML = `
+                <p>${mensagem}</p>
+                <button onclick="this.parentElement.remove()">Fechar</button>
+            `;
+            document.body.appendChild(popup);
+        }
+    </script>
+</body>
+</html>
