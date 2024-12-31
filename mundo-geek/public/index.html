@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Acrônimos</title>
+    <style>
+        /* Estilo Geral */
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #000; /* Fundo preto */
+            color: #fff; /* Texto branco */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #1c1c1c; /* Fundo cinza escuro */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #fff; /* Título branco */
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #444; /* Borda cinza escuro */
+            border-radius: 4px;
+            font-size: 16px;
+            color: #fff; /* Texto branco */
+            background-color: #222; /* Fundo cinza escuro */
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #ff0000; /* Destaque vermelho ao foco */
+            outline: none;
+        }
+
+        button {
+            background-color: #ff0000; /* Fundo vermelho */
+            color: #fff; /* Texto branco */
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #cc0000; /* Vermelho mais escuro ao hover */
+            transform: scale(1.05);
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff; /* Texto branco */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gerador de Acrônimos</h1>
+        <input id="input-palavras" type="text" placeholder="Digite palavras separadas por vírgulas" />
+        <button onclick="gerarAcronimo()">Gerar Acrônimo</button>
+        <div class="result" id="resultado"></div>
+    </div>
+
+    <script>
+        function criarAcronimo(palavras) {
+            return palavras
+                .filter(palavra => typeof palavra === 'string' && palavra.trim().length > 0)
+                .map(palavra => palavra.trim()[0].toUpperCase())
+                .join('');
+        }
+
+        function gerarAcronimo() {
+            const input = document.getElementById('input-palavras').value;
+            const palavras = input.split(',');
+            const acronimo = criarAcronimo(palavras);
+            const resultadoDiv = document.getElementById('resultado');
+            resultadoDiv.textContent = acronimo || "Por favor, insira palavras válidas!";
+        }
+    </script>
+</body>
+</html>
