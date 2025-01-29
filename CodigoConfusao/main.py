@@ -1,14 +1,12 @@
 def decifrar_mensagem(codificada):
-    """
-    Decifra uma mensagem onde cada par de caracteres consecutivos foi invertido.
-    """
+
     mensagem_decifrada = []
     print("Iniciando a decodificação...")
 
     for i in range(0, len(codificada) - 1, 2):
-        # Inverte o par de caracteres
-        mensagem_decifrada.append(codificada[i + 1])  # Segundo caractere do par
-        mensagem_decifrada.append(codificada[i])      # Primeiro caractere do par
+     
+        mensagem_decifrada.append(codificada[i + 1]) 
+        mensagem_decifrada.append(codificada[i])     
         print(f"Par processado: '{codificada[i]}{codificada[i + 1]}' -> '{codificada[i + 1]}{codificada[i]}'")
 
     mensagem_decifrada = ''.join(mensagem_decifrada)
