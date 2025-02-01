@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="light" style="color-scheme: light;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste HTML Básico</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .flex {
+            display: flex;
+        }
+        .w-full {
+            width: 100%;
+        }
+        .justify-center {
+            justify-content: center;
+        }
+        .items-center {
+            align-items: center;
+        }
+        .bg-background {
+            background-color: #f9f9f9;
+        }
+        .min-h-screen {
+            min-height: 100vh;
+        }
+        .py-16 {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+        .container {
+            width: 100%;
+            padding-right: 1rem;
+            padding-left: 1rem;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        .bg-muted {
+            background-color: #333;
+        }
+        .text-white {
+            color: #fff;
+        }
+    </style>
+</head>
+<body class="__variable_179for __variable_6c1967">
+    <div class="flex w-full justify-center fixed top-1 z-50">
+        <div>Topo Fixo</div>
+    </div>
+    <main class="bg-background">
+        <div class="overflow-x-hidden">
+            <div class="relative min-h-screen flex items-center justify-center w-full">
+                <h1>Conteúdo Principal</h1>
+            </div>
+            <section id="benefits" class="py-16 relative">
+                <h2>Benefícios</h2>
+                <p>Informações sobre os benefícios.</p>
+            </section>
+            <section id="cases" class="py-16 relative">
+                <h2>Casos</h2>
+                <p>Exemplos de casos.</p>
+            </section>
+            <section id="questions" class="container py-16">
+                <h2>Perguntas Frequentes</h2>
+                <p>Respostas para perguntas comuns.</p>
+            </section>
+        </div>
+    </main>
+    <footer class="bg-muted text-white py-4">
+        <div class="container">
+            <p>Rodapé</p>
+        </div>
+    </footer>
+</body>
+</html>
