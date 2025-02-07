@@ -65,12 +65,18 @@ def encontrar_tesouro():
     # Exibir o resultado na interface
     label_resultado.config(text=f"🌌 Planeta do Tesouro: {resultado}", fg="yellow")
 
+    # Habilitar o botão de reinício
+    btn_reiniciar.config(state="normal")
+
 # Função para reiniciar a aplicação
 def reiniciar_aplicacao():
     global planetas
     planetas = []  # Zera a lista de planetas
     lista_planetas.delete(0, tk.END)  # Limpa a lista exibida na interface
     label_resultado.config(text="🌌 Planeta do Tesouro: ???", fg="white")  # Reseta o resultado
+    
+    # Desativar o botão de reinício até que um novo planeta seja encontrado
+    btn_reiniciar.config(state="disabled")
 
 # Criando a interface gráfica
 root = tk.Tk()
@@ -112,8 +118,8 @@ btn_encontrar.pack(pady=10)
 label_resultado = tk.Label(root, text="🌌 Planeta do Tesouro: ???", font=("Arial", 14, "bold"), fg="white", bg="#282c34")
 label_resultado.pack(pady=20)
 
-# Botão para reiniciar a aplicação (sempre visível)
-btn_reiniciar = tk.Button(root, text="Reiniciar Aplicação", font=("Arial", 12, "bold"), bg="#e06c75", fg="white", command=reiniciar_aplicacao)
+# Botão para reiniciar a aplicação (inicialmente desativado)
+btn_reiniciar = tk.Button(root, text="Reiniciar Aplicação", font=("Arial", 12, "bold"), bg="#e06c75", fg="white", state="disabled", command=reiniciar_aplicacao)
 btn_reiniciar.pack(pady=15)
 
 # Rodapé
