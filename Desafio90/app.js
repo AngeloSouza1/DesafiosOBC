@@ -1,7 +1,7 @@
 // Função para decifrar uma mensagem cifrada com a Cifra de César (deslocamento de -1)
 function decifrarCifraCesar(mensagem) {
     return mensagem.split('').map(char => {
-        if (/[a-zA-Z]/.test(char)) {
+        if (/[a-zA-ZÀ-ÿ]/.test(char)) { // Inclui caracteres acentuados
             let codigo = char.charCodeAt(0);
             let novoCodigo = codigo - 1;
             
@@ -10,7 +10,9 @@ function decifrarCifraCesar(mensagem) {
             
             return String.fromCharCode(novoCodigo);
         }
-        return char === '!' ? ' ' : char; // Substitui '!' por espaço e mantém caracteres especiais
+        if (char === '!') return ' '; // Substitui '!' por espaço
+        if (char === ' ') return "'"; // Substitui espaço extra por apóstrofo
+        return char; // Mantém outros caracteres especiais
     }).join('');
 }
 
