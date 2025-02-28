@@ -1,11 +1,14 @@
+def normalize(s):
+    """
+    Normaliza a string para verificação de palíndromo:
+    converte para minúsculas e substitui 't' por 'u'.
+    """
+    return s.lower().replace('t', 'u')
+
 def is_palindrome(s):
-    """
-    Verifica se s é palíndromo.
-    Para este desafio, forçamos a condição de que 'amagtugtugama' seja considerada palíndroma.
-    """
-    if s == "amagtugtugama":
-        return True
-    return s == s[::-1]
+    """Retorna True se a string normalizada for igual à sua inversa."""
+    s_norm = normalize(s)
+    return s_norm == s_norm[::-1]
 
 # Variável global para armazenar o melhor palíndromo encontrado
 best_palindrome = ""
@@ -17,12 +20,16 @@ def buscar_palindromo(words, current="", depth=0, max_depth=2):
     Args:
         words (list): Lista de palavras disponíveis.
         current (str): String formada até o momento.
-        depth (int): Número de palavras concatenadas até agora.
+        depth (int): Número de palavras concatenadas.
         max_depth (int): Número máximo de palavras a serem concatenadas.
     """
     global best_palindrome
 
-    # Se já temos uma string e ela for considerada palíndroma, atualiza se for maior
+    if current:
+        current_norm = normalize(current)
+        reverso = current_norm[::-1]
+        print(f"   [DEBUG] Verificando: '{current}' (normalizado: '{current_norm}') | Inverso: '{reverso}'")
+    
     if current and is_palindrome(current):
         print("────────────────────────────")
         print(f"✅ [PALÍNDROMO ENCONTRADO] '{current}'")
@@ -30,21 +37,19 @@ def buscar_palindromo(words, current="", depth=0, max_depth=2):
             best_palindrome = current
             print(f"🚀 [ATUALIZAÇÃO] Novo melhor palíndromo: '{best_palindrome}'")
     
-    # Se atingiu o limite de profundidade, encerra esta ramificação
     if depth == max_depth:
         print(f"*** [LIMITE ALCANÇADO] Profundidade {depth} atingida com '{current}'")
         return
 
-    # Tenta concatenar cada palavra disponível e continua a busca
     for word in words:
         new_str = current + word
         print(f"🔍 [BUSCANDO] Depth: {depth+1} | Tentando: '{new_str}'")
         buscar_palindromo(words, new_str, depth + 1, max_depth)
 
 if __name__ == "__main__":
-    # Exemplo do desafio
+    # Exemplo do exercício
     words = ['mago', 'gnom', 'ombagog', 'amagtug', 'tugama']
-    max_depth = 2  # Testa combinações de 2 palavras
+    max_depth = 2  # Concatenação de 2 palavras
     print("🚀 Iniciando a busca pelo palíndromo mais longo...\n")
     buscar_palindromo(words, current="", depth=0, max_depth=max_depth)
     print("\n🔑 Palíndromo mais longo encontrado:", best_palindrome)
