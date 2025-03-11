@@ -7,7 +7,7 @@ def contar_pares_harmonicos(notas):
     pares_harmonicos = []
     
     for i in range(len(notas) - 1):
-        if isprime(abs(notas[i] - notas[i + 1])):  # Verifica se a diferença é um número primo
+        if isprime(abs(notas[i] - notas[i + 1])): 
             pares_harmonicos.append((notas[i], notas[i + 1]))
 
     print("🎶🔍 Analisando os pares harmônicos...\n")
