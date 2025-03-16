@@ -1,10 +1,9 @@
-// Função para reorganizar as letras em ordem alfabética, preservando os caracteres especiais
+
 function encontrarCodigo(texto) {
-    // Extrai apenas as letras e ordena
+  
     const letrasOrdenadas = texto.replace(/[^a-zA-Z]/g, '').split('').sort();
     let index = 0;
-    
-    // Reconstrói a string, mantendo os caracteres especiais nas mesmas posições
+
     return texto.split('').map(char => /[a-zA-Z]/.test(char) ? letrasOrdenadas[index++] : char).join('');
 }
 
