@@ -1,4 +1,3 @@
-# 🔍 Função para verificar se um número é primo
 def eh_primo(n):
     if n < 2:
         return False
@@ -7,30 +6,20 @@ def eh_primo(n):
             return False
     return True
 
-# 🔢 Soma os dígitos de um número
-def soma_dos_digitos(n):
-    return sum(int(d) for d in str(n))
+def soma_dos_digitos(numero):
+    return sum(int(digito) for digito in str(numero))
 
-# ✨ Função principal com os novos critérios (primos < 20)
-def encontrar_numero_magico_atualizado():
-    primos = [i for i in range(2, 20) if eh_primo(i)]
+def encontrar_numero_magico():
+    primos = [n for n in range(2, 20) if eh_primo(n)]
     soma_primos = sum(primos)
-    soma_digitos = soma_dos_digitos(soma_primos)
-
-    print("🚀 Missão: Encontrar o número mágico com base nos novos critérios!")
-    print(f"🔢 Primos < 20 encontrados: {primos}")
-    print(f"📊 Soma dos primos: {soma_primos}")
-    print(f"🧮 Soma dos dígitos de {soma_primos}: {soma_digitos}")
-    print(f"➗ Resto da divisão por 10: {soma_primos % 10}")
-
-    # Verificações finais
-    if soma_digitos <= 25 and soma_primos % 10 == 7:
-        print("\n✅ Número mágico encontrado!")
-        print(f"✨ Número mágico: {soma_primos}")
-        print("   ✔ Soma dos dígitos ≤ 25")
-        print("   ✔ Resto da divisão por 10 = 7")
+    
+    if soma_dos_digitos(soma_primos) <= 25 and soma_primos % 10 == 7:
+        print(f"✨ Número mágico encontrado: {soma_primos}")
+        print(f"🔢 Primos somados: {primos}")
+        print(f"🔎 Soma dos dígitos: {soma_dos_digitos(soma_primos)}")
+        print(f"🧮 Resto da divisão por 10: {soma_primos % 10}")
     else:
-        print("\n❌ Este número não atende todos os critérios mágicos.")
+        print("❌ Nenhum número mágico encontrado com os critérios dados.")
 
 # Executar
-encontrar_numero_magico_atualizado()
+encontrar_numero_magico()
