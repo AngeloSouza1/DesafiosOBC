@@ -18,4 +18,3 @@ function decifraDragao(mensagem) {
   // ✨ Resultado
   console.log("🐉 Mensagem dos Dragões:", mensagem);
   console.log("🧙 Tradução para o idioma humano:", resultado);
-  
