@@ -1,17 +1,30 @@
+function hackearTempo(palavrasCodificadas) {
+  let somaAnos = 0;
 
-x = int(input("Código do produto comprado: "))
-y = int(input("Quantidade comprada: "))
+  console.log("🕰️ Iniciando decodificação dos eventos históricos...\n");
 
-precos = {
-    1: 5.00,
-    2: 3.50,
-    3: 4.80,
-    4: 8.90,
-    5: 7.32
+  for (const palavra of palavrasCodificadas) {
+    const match = palavra.match(/\d+/); // Extrai o número (ano) da string
+
+    if (match) {
+      const ano = parseInt(match[0]);
+      console.log(`🔍 Evento: "${palavra}" ➡️ Ano detectado: ${ano}`);
+      somaAnos += ano;
+    } else {
+      console.log(`⚠️ Nenhum número encontrado na palavra: "${palavra}"`);
+    }
+  }
+
+  console.log(`\n🧠 Ano final decodificado: ${somaAnos}`);
+  return somaAnos;
 }
 
-if x in precos:
-    total = precos[x] * y
-    print(f"Valor a pagar R${total:.2f}")
-else:
-    print("Código do produto inválido.")
+// 🧪 Teste com o exemplo do desafio
+const eventosHistoricos = [
+  "Guerra1939Mundial",
+  "Moon1969Landing",
+  "Wall1989Fall",
+  "Twin2001Towers"
+];
+
+hackearTempo(eventosHistoricos); // Esperado: 7898
