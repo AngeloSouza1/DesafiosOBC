@@ -1,14 +1,9 @@
 function palindromeNumbers(inicio, fim) {
-  const resultado = [];
-
-  for (let i = inicio; i <= fim; i++) {
-    const str = String(i);
-    if (str === str.split('').reverse().join('')) {
-      resultado.push(i);
-    }
-  }
-
-  return resultado;
+  return Array.from({ length: fim - inicio + 1 }, (_, i) => i + inicio)
+    .filter(n => {
+      const s = String(n);
+      return s === [...s].reverse().join('');
+    });
 }
 
 
